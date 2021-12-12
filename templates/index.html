@@ -1,0 +1,42 @@
+{% extends "default.html" %} {% block body %}
+<div class="main-box">
+    {% if state==0 %}
+    <h2>Upload an image to get started!</h2>
+    {% else %}
+    <h2>Final Image!</h2>
+    {% endif %}
+
+    <div class="view-img">
+        {% if state==0 %}
+        <img src="{{ url_for('static',filename='images/face-mask.jpg') }}" alt="Face Mask pic banner" style="width: 30%; height: 30%" /> 
+        {% else %}
+        <img src="{{ url_for('static',filename='working-dir/final_output.png') }}" alt="Uploaded pic" style="width: 35%; height: 35%" /> {% endif %}
+        </form>
+    </div>
+    <form action="{{ url_for('home') }}" method="POST" enctype="multipart/form-data" id="main-form">
+        <br><br>
+        <div class="input-file">
+            {% if state==0 %}
+            <input type="file" name="file" /> {% endif %}
+        </div>
+        <div class="submit-button">
+            {% if state==0 %}
+            <a href="#" onclick="document.getElementById('main-form').submit();">
+          {% else %}
+        <a href="{{ url_for('home') }}">
+          {% endif %}
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          {% if state==0 %}
+          <div>upload</div>
+          {% else %}
+          <div>go back</div>
+          {% endif %}
+        </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+</div>
