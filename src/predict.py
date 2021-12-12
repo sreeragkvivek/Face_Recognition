@@ -24,7 +24,7 @@ def predict_img(path):
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
 
     # model=tf.keras.models.load_model('./models/cnn.h5')
-    model = pickle.load(open('./NB.pickle','rb'))
+    model = pickle.load(open('./models/NB.pickle','rb'))
     # print(img.reshape(-1,64,64))
 
     resized_img = cv2.resize(img, (64, 64))
