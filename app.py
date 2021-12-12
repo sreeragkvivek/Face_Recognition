@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect
-import os
 from werkzeug.utils import secure_filename
+import os, sys
 sys.path.insert(1, './src/')
 from predict import predict_img
 
@@ -29,7 +29,7 @@ def home():
             img_path=os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(img_path)
             res=predict_img(img_path)
-            return render_template('index.html', state=1, res=None)
+            return render_template('index.html', state=1, res=res)
     else:
         if os.listdir(WORKING_DIRECTORY) != []:
             for f in os.listdir(WORKING_DIRECTORY):
@@ -38,4 +38,4 @@ def home():
     return render_template('index.html', state=0, res=None)
 
 app.config['UPLOAD_FOLDER'] = WORKING_DIRECTORY
-app.run(debug=True)
+app.run(host ='0.0.0.0', port = 5001) 

@@ -3,16 +3,34 @@
     {% if state==0 %}
     <h2>Upload an image to get started!</h2>
     {% else %}
-    <h2>Final Image!</h2>
+    <h2>Result</h2>
     {% endif %}
 
     <div class="view-img">
         {% if state==0 %}
         <img src="{{ url_for('static',filename='images/face-mask.jpg') }}" alt="Face Mask pic banner" style="width: 30%; height: 30%" /> 
         {% else %}
-        <img src="{{ url_for('static',filename='working-dir/final_output.png') }}" alt="Uploaded pic" style="width: 35%; height: 35%" /> {% endif %}
+        <img src="{{ url_for('static',filename='working-dir/final_output.png') }}" alt="Uploaded pic" style="width: 30%; height: 30%" /> 
+        {% endif %}
         </form>
     </div>
+
+    {% if state==1 and res==0 %}
+    <div>
+        <h2>This person has not worn their mask!</h2>
+    </div>
+    {% endif %}
+    {% if state==1 and res==1 %}
+    <div>
+        <h2>This person has worn their mask incorrectly! </h2>
+    </div>
+    {% endif %}
+    {% if state==1 and res==2 %}
+    <div>
+        <h2>This person has worn their mask correctly!!! </h2>
+    </div>
+    {% endif %}
+    
     <form action="{{ url_for('home') }}" method="POST" enctype="multipart/form-data" id="main-form">
         <br><br>
         <div class="input-file">
