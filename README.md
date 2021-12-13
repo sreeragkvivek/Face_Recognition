@@ -1,2 +1,2 @@
-# Hmm_MathProject
-Face Recognition using HMM
+# Naive Bayes_MathProject
+Face Recognition using Naive Bayes
