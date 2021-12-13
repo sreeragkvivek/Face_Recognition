@@ -1,2 +1,3 @@
 # Naive Bayes_MathProject
-Face Recognition using Naive Bayes
+Flask app for Face Recognition using Naive Bayes 
+
